@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://6buip8jmqfxr"]
+
+[ext_resource type="Script" uid="uid://b3nlb27kj7m73" path="res://in_shop.gd" id="1_memwb"]
+[ext_resource type="Texture2D" uid="uid://vy6daxbjsrit" path="res://sprites/Shop1V2.png" id="2_nnlt3"]
+[ext_resource type="Texture2D" uid="uid://ce6um15yori10" path="res://sprites/Shop2V2.png" id="3_ao633"]
+[ext_resource type="Texture2D" uid="uid://bhcvlam7xmgxp" path="res://sprites/Battery.png" id="4_ko3k4"]
+[ext_resource type="Script" uid="uid://d51ypha5cgd6" path="res://item.gd" id="5_wxpte"]
+[ext_resource type="Texture2D" uid="uid://borvhcr404ctr" path="res://sprites/GodPowers.png" id="6_jbrla"]
+[ext_resource type="Texture2D" uid="uid://cnkkcp1g6prga" path="res://sprites/PogoStick.png" id="7_0nien"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_memwb"]
+frames = 2
+frame_0/texture = ExtResource("2_nnlt3")
+frame_1/texture = ExtResource("3_ao633")
+frame_1/duration = 1.0
+
+[node name="InShop" type="Control" unique_id=1972066725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_memwb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1862880323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_memwb")
+expand_mode = 1
+
+[node name="Item 1" type="TextureButton" parent="." unique_id=205850800 node_paths=PackedStringArray("Description")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = 110.0
+offset_right = 428.0
+offset_bottom = 238.0
+grow_vertical = 2
+texture_normal = ExtResource("4_ko3k4")
+script = ExtResource("5_wxpte")
+Description = NodePath("Item 1 Description")
+
+[node name="Item 1 Description" type="RichTextLabel" parent="Item 1" unique_id=813492745]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(300, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "AA Battery
+Cost: 1 
+Make your dash a little Higher."
+scroll_active = false
+
+[node name="Item 2" type="TextureButton" parent="." unique_id=1539315208 node_paths=PackedStringArray("Description")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 110.0
+offset_right = 64.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_jbrla")
+script = ExtResource("5_wxpte")
+Description = NodePath("Item 2 Description")
+
+[node name="Item 2 Description" type="RichTextLabel" parent="Item 2" unique_id=610442168]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(300, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "God Mode
+Cost: 99
+Multiplies all stats by 10"
+
+[node name="Item 3" type="TextureButton" parent="." unique_id=554669178 node_paths=PackedStringArray("Description")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -428.0
+offset_top = 110.0
+offset_right = -300.0
+offset_bottom = 238.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("7_0nien")
+script = ExtResource("5_wxpte")
+Description = NodePath("Item 3 Description")
+
+[node name="Item 3 Description" type="RichTextLabel" parent="Item 3" unique_id=124991010]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(300, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "Pogo Stick
+Cost: 20
+Gives you an extra jump"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2109962466]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 225.0
+offset_right = 367.0
+offset_bottom = 317.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Press Escape to Leave"
+
+[connection signal="pressed" from="Item 1" to="." method="_on_item_1_pressed"]
+[connection signal="pressed" from="Item 2" to="." method="_on_item_2_pressed"]
+[connection signal="pressed" from="Item 3" to="." method="_on_item_3_pressed"]

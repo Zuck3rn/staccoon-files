@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dgebeiglnsydp"]
+
+[ext_resource type="Script" uid="uid://sme1pid2qu3h" path="res://game_ui.gd" id="1_oaw30"]
+[ext_resource type="Texture2D" uid="uid://dgtqtor0e388w" path="res://sprites/Coins.png" id="2_oaw30"]
+
+[node name="GameUI" type="Control" unique_id=638607522]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_oaw30")
+
+[node name="PopUp" type="RichTextLabel" parent="." unique_id=4578759]
+visible = false
+layout_mode = 0
+offset_left = -297.0
+offset_top = -86.0
+offset_right = 301.0
+offset_bottom = -3.0
+theme_override_font_sizes/normal_font_size = 42
+text = "Press E to Open Shop!"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="TextureRect" parent="." unique_id=1443993589]
+layout_mode = 1
+offset_right = 97.0
+offset_bottom = 101.0
+texture = ExtResource("2_oaw30")
+expand_mode = 1
+
+[node name="CoinCount" type="RichTextLabel" parent="Coins" unique_id=1783647676]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 93.91
+offset_top = -25.5
+offset_right = 365.0
+offset_bottom = 23.5
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 35
+text = "Coins: 0"
+fit_content = true
+vertical_alignment = 1

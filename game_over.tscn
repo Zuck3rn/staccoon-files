@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://besoxivw6n3vo"]
+
+[ext_resource type="Script" uid="uid://bd6r432uyqrsj" path="res://game_over.gd" id="1_y26ei"]
+[ext_resource type="Texture2D" uid="uid://dd0gu21fdx367" path="res://sprites/GameOver1.png" id="2_ccer4"]
+[ext_resource type="Texture2D" uid="uid://dmca7mhmrsd0i" path="res://sprites/GameOver2.png" id="3_8u835"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ftari"]
+frames = 2
+frame_0/texture = ExtResource("2_ccer4")
+frame_0/duration = 0.6
+frame_1/texture = ExtResource("3_8u835")
+frame_1/duration = 0.6
+
+[node name="GameOver" type="Control" unique_id=1445921490]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y26ei")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=536435078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_ftari")
+expand_mode = 1
+
+[node name="Score" type="RichTextLabel" parent="." unique_id=1796907758]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 300.0
+offset_right = 350.0
+offset_bottom = 410.0
+grow_horizontal = 2
+pivot_offset = Vector2(350, 0)
+theme_override_font_sizes/normal_font_size = 80
+text = "SCORE: "
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1108056389]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -116.565
+offset_right = 99.0
+offset_bottom = -80.56494
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 42
+text = "Back to Title Screen"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

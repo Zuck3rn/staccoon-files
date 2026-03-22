@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://ci5svilbvr7hm"]
+
+[ext_resource type="Texture2D" uid="uid://bt5vmioelkb7f" path="res://sprites/Raccoon.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cjs6k3dr18y2l" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b1ubkg1vl1haw" path="res://stackable_object.tscn" id="2_i3pqv"]
+[ext_resource type="AudioStream" uid="uid://b0y8um065g5em" path="res://audio/Jump.wav" id="2_urp6f"]
+[ext_resource type="Texture2D" uid="uid://c12of0wbn58wc" path="res://sprites/RaccoonDash1-1.png" id="3_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://bbsxdwwunvd4h" path="res://sprites/RaccoonJump-1.png" id="4_1jxqw"]
+[ext_resource type="AudioStream" uid="uid://bkcs3o73bkqen" path="res://audio/Dash.wav" id="4_606se"]
+[ext_resource type="Texture2D" uid="uid://du6dexlcma2w2" path="res://sprites/RaccoonFall-1.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://c4t7yhmodc00a" path="res://sprites/RaccoonDash2-1.png" id="4_nvl01"]
+[ext_resource type="Texture2D" uid="uid://brso5jvhuj6ds" path="res://sprites/RaccoonSit-1.png" id="5_dw050"]
+[ext_resource type="Texture2D" uid="uid://bp7ox7ow5o20e" path="res://sprites/RaccoonWalk1-1.png" id="6_b26j0"]
+[ext_resource type="Texture2D" uid="uid://b36vwqm7t2po0" path="res://sprites/RaccoonWalk2-1.png" id="12_ivps1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
+radius = 26.0
+height = 68.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n7ghd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nvl01")
+}],
+"loop": true,
+"name": &"dash-1",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4flbx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": false,
+"name": &"fall-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1jxqw")
+}],
+"loop": false,
+"name": &"jump-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dw050")
+}],
+"loop": false,
+"name": &"neutral-1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b26j0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ivps1")
+}],
+"loop": true,
+"name": &"walk-1",
+"speed": 7.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=126546437]
+script = ExtResource("1_onrkg")
+maxJumps = 3
+jumpFX = ExtResource("2_urp6f")
+dashFX = ExtResource("4_606se")
+
+[node name="Stackable Object" parent="." unique_id=1481641737 instance=ExtResource("2_i3pqv")]
+position = Vector2(0, -29.77)
+collision_layer = 0
+type = "none"
+
+[node name="Dash Timer" type="Timer" parent="." unique_id=1559146225]
+wait_time = 0.5
+
+[node name="StackCoolDown" type="Timer" parent="." unique_id=452991919]
+
+[node name="CoyoteTime" type="Timer" parent="." unique_id=1018296850]
+wait_time = 0.3
+
+[node name="PlayerSound" type="AudioStreamPlayer2D" parent="." unique_id=1108625196]
+bus = &"SFX"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=662273084]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_sweqy")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1017580560]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_hqtel")
+animation = &"walk-1"
+
+[connection signal="timeout" from="Dash Timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="StackCoolDown" to="." method="_on_stack_cool_down_timeout"]
+[connection signal="timeout" from="CoyoteTime" to="." method="_on_coyote_time_timeout"]

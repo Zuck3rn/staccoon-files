@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b1ubkg1vl1haw"]
+
+[ext_resource type="Script" uid="uid://drdaighnyq353" path="res://stackable_object.gd" id="1_b8yda"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_b8yda"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8yda"]
+radius = 17.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qqm"]
+size = Vector2(68, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8dys1"]
+size = Vector2(32, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jce6u"]
+size = Vector2(97, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfwf"]
+size = Vector2(97, 7)
+
+[node name="Stackable Object" type="StaticBody2D" unique_id=1481641737 node_paths=PackedStringArray("box")]
+script = ExtResource("1_b8yda")
+texture = SubResource("ImageTexture_b8yda")
+box = NodePath("ManHole")
+
+[node name="ManHole" type="CollisionShape2D" parent="." unique_id=1234338376]
+shape = SubResource("CircleShape2D_b8yda")
+disabled = true
+
+[node name="Umbrella" type="CollisionShape2D" parent="." unique_id=1572926121]
+position = Vector2(0, 22.5)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_o5qqm")
+disabled = true
+one_way_collision = true
+
+[node name="JetPack" type="CollisionShape2D" parent="." unique_id=1170263472]
+shape = SubResource("RectangleShape2D_8dys1")
+disabled = true
+
+[node name="DivingR" type="CollisionShape2D" parent="." unique_id=1202647173]
+position = Vector2(32.5, -12.5)
+shape = SubResource("RectangleShape2D_jce6u")
+disabled = true
+one_way_collision = true
+
+[node name="DivingL" type="CollisionShape2D" parent="." unique_id=862241918]
+position = Vector2(-32.5, -12.5)
+shape = SubResource("RectangleShape2D_dcfwf")
+disabled = true
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740567959]
+scale = Vector2(0.1, 0.1)

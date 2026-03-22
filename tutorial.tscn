@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ptryd0nthdha"]
+
+[node name="Tutorial" type="Control" unique_id=2043306779]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=809306278]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -564.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 251.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 25
+text = "Movement: Arrow Keys/WASD
+Jump: Space/Up Arrow/W
+Pause: Escape
+End Game: Delete"
+text_direction = 2
